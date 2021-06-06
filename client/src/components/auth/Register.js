@@ -28,8 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
-    
+    marginTop: theme.spacing(3)
   },
   submit: {
     margin: theme.spacing(3, 0, 2)
@@ -41,26 +40,25 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     flexDirection: 'column',
     height: '35px',
-    backgroundColor:'rgba(0, 0, 0, 0.952)',
+    backgroundColor: 'rgba(0, 0, 0, 0.952)',
     bottom: '0px',
     left: '0',
     width: '100%',
-    overflowY: 'hidden',
+    overflowY: 'hidden'
   },
   footerp: {
     textAlign: 'center',
     justifyContent: 'center',
-    color:'rgb(255, 255, 255)',
+    color: 'rgb(255, 255, 255)',
     fontSize: '13px',
-    opacity: '0.8',
-   
+    opacity: '0.8'
   },
   link: {
-    color: 'white',
+    color: 'white'
   }
 }));
 
-const Register = ({ setAlert, register, isAuthenticated,loading }) => {
+const Register = ({ setAlert, register, isAuthenticated, loading }) => {
   const classes = useStyles();
   const [formData, setFormData] = useState({
     name: '',
@@ -175,12 +173,13 @@ const Register = ({ setAlert, register, isAuthenticated,loading }) => {
       </div>
       <div className={classes.footer}>
         <p className={classes.footerp}>
-      All rights reserved. Copyright ©  <Link className={classes.link} to="http://www.manthan-app.org/">
-          Manthan
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </p>
+          All rights reserved. Copyright ©{' '}
+          <Link className={classes.link} to="http://www.manthan-app.org/">
+            Manthan
+          </Link>{' '}
+          {new Date().getFullYear()}
+          {'.'}
+        </p>
       </div>
     </Container>
   );

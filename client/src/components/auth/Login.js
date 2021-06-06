@@ -43,22 +43,21 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     flexDirection: 'column',
     height: '35px',
-    backgroundColor:'rgba(0, 0, 0, 0.952)',
+    backgroundColor: 'rgba(0, 0, 0, 0.952)',
     bottom: '0px',
     left: '0',
     width: '100%',
-    overflowY: 'hidden',
+    overflowY: 'hidden'
   },
   footerp: {
     textAlign: 'center',
     justifyContent: 'center',
-    color:'rgb(255, 255, 255)',
+    color: 'rgb(255, 255, 255)',
     fontSize: '13px',
-    opacity: '0.8',
-   
+    opacity: '0.8'
   },
   link: {
-    color: 'white',
+    color: 'white'
   }
 }));
 
@@ -68,14 +67,17 @@ const Login = ({ login, isAuthenticated, loading }) => {
     email: '',
     password: '',
     showPassword: false,
-    rememberMe:false
+    rememberMe: false
   });
 
-  const { email, password , rememberMe } = formData;
+  const { email, password, rememberMe } = formData;
 
-  const onChange = (e) =>{ 
-    setFormData({ ...formData, [e.target.name]: e.target.name==='rememberMe' ? e.target.checked : e.target.value }); 
-  }
+  const onChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.name === 'rememberMe' ? e.target.checked : e.target.value
+    });
+  };
 
   const handleClickShowPassword = () => {
     setFormData({ ...formData, showPassword: !formData.showPassword });
@@ -85,7 +87,7 @@ const Login = ({ login, isAuthenticated, loading }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    login(email, password,rememberMe);
+    login(email, password, rememberMe);
   };
 
   if (isAuthenticated) {
@@ -141,7 +143,14 @@ const Login = ({ login, isAuthenticated, loading }) => {
           />
 
           <FormControlLabel
-            control={<Checkbox checked={rememberMe} color="primary" onChange={onChange} name="rememberMe" />}
+            control={
+              <Checkbox
+                checked={rememberMe}
+                color="primary"
+                onChange={onChange}
+                name="rememberMe"
+              />
+            }
             label="Remember me"
           />
           <Button
@@ -166,12 +175,13 @@ const Login = ({ login, isAuthenticated, loading }) => {
       </div>
       <div className={classes.footer}>
         <p className={classes.footerp}>
-      All rights reserved. Copyright ©  <Link className={classes.link} to="http://www.manthan-app.org/">
-          Manthan
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </p>
+          All rights reserved. Copyright ©{' '}
+          <Link className={classes.link} to="http://www.manthan-app.org/">
+            Manthan
+          </Link>{' '}
+          {new Date().getFullYear()}
+          {'.'}
+        </p>
       </div>
     </Container>
   );
