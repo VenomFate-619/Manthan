@@ -1,4 +1,3 @@
 node_modules/
 config/production.json
 client/.eslintcache
-config/default.json
