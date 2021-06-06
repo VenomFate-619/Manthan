@@ -17,7 +17,7 @@ import setAuthToken from './utils/setAuthToken';
 const useStyles = makeStyles(() => ({
   back: {
     minHeight: '100vh',
-    background: `url(${backgroundImage})`,
+    background: window.location.pathname !== '/' ? `url(${backgroundImage})` : null,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover'
   },

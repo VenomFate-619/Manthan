@@ -15,7 +15,7 @@ const Scores = ({ match, getScores, test: { test, loading } }) => {
   }, [getScores, match.params.id]);
 
   if (loading) return <Spinner />;
-  if (!test) {
+  if (test === null) {
     return <NotFound />;
   }
   return (
