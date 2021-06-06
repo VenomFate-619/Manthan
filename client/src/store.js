@@ -9,9 +9,9 @@ const initialState = {};
 const middleware = [thunk];
 
 // adding trace for redux devtools
-const composeEnhancers = composeWithDevTools({ 
-  trace: true, 
-}); 
+const composeEnhancers = composeWithDevTools({
+  trace: true
+});
 
 const store = createStore(
   rootReducer,
