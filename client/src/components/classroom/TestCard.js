@@ -110,7 +110,7 @@ const TestCard = ({ admin, test, id, scores, deleteTest, auth: { user } }) => {
               className={classes.button}
               variant="contained"
               color="primary"
-              disabled={!admin}
+              disabled={admin}
               href={`/test/${id}`}
             >
               Start Test
