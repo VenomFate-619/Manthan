@@ -4,10 +4,10 @@ const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 // bring in radnomatic to get class code
 const randomatic = require('randomatic');
-const multer = require('multer')
+const multer = require('multer');
 const Classroom = require('../../models/Classroom');
 const User = require('../../models/User');
-const upload = multer()
+const upload = multer();
 // @route    GET api/classroom/
 // @desc     Get current users classroom
 // @access   Private
@@ -39,7 +39,6 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-
 
     const { name, subject, subcode } = req.body;
 

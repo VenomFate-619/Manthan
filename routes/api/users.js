@@ -6,7 +6,6 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator');
 const normalize = require('normalize-url');
-const auth = require('../../middleware/auth');
 const User = require('../../models/User');
 
 // @route    POST api/users
@@ -80,26 +79,5 @@ router.post(
     }
   }
 );
-router.post('/theme', auth, async (req, res) => {
-  try {
-    const user = await User.findOneAndUpdate(
-      { _id: req.user.id },
-      { theme: req.body.theme }
-    );
 
-    if (!user) {
-      res.status(400).json({
-        message: 'Error to update theme.'
-      });
-    }
-    res.status(201).json({
-      message: 'Theme updated successfully.'
-    });
-  } catch (err) {
-    res.status(400),
-      json({
-        message: 'Error to update theme.'
-      });
-  }
-});
 module.exports = router;

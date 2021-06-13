@@ -37,24 +37,24 @@ function GenerateTest(Questions, Rules) {
   return res;
 }
 
-function DuplicateQuestion(ques) {
-  var read_vals = [];
-  var flag = 0;
-  for (var j = 0; j < ques.length; j++) {
-    read_vals[j] = ques[j];
-  }
-  for (var i = 0; i < ques.length; i++) {
-    flag = 0;
-    for (var k = 0; k < ques.length; k++) {
-      if (ques[i] === read_vals[k]) {
-        flag = flag + 1;
-      }
-      if (flag !== 1) {
-        return res.json({ msg: 'This question already exists' });
-      }
-    }
-  }
-}
+//function DuplicateQuestion(ques) {
+//  var read_vals = [];
+//  var flag = 0;
+//  for (var j = 0; j < ques.length; j++) {
+//    read_vals[j] = ques[j];
+//  }
+//  for (var i = 0; i < ques.length; i++) {
+//    flag = 0;
+//    for (var k = 0; k < ques.length; k++) {
+//      if (ques[i] === read_vals[k]) {
+//        flag = flag + 1;
+//      }
+//      if (flag !== 1) {
+//        return res.json({ msg: 'This question already exists' });
+//      }
+//    }
+//  }
+//}
 
 // @route    GET api/test/:code
 // @desc     Get current classroom test
@@ -105,31 +105,6 @@ router.post('/', auth, async (req, res) => {
 
   // save validation errors in an array
   var validationErrors = [];
-  // save index of valid rules in a var
-  var validRules = {};
-  // calculate total marks based on questions and types
-  test.marks = 0;
-
-  rules.forEach((rule, index) => {
-    var marks = Number(rule.marks);
-    var type = rule.type;
-    rule.noofques = 0;
-
-    if (marks < 0) validationErrors.push(`Rule ${type} is not valid`);
-    else validRules[type] = index;
-  });
-
-  questions.forEach((question, index) => {
-    var type = question.type;
-
-    if (validRules[type] === null)
-      validationErrors.push(`Question ${index} is not of a valid type`);
-    else {
-      rules[validRules[type]].noofques += 1;
-      test.marks += rules[validRules[type]].marks;
-      question.test = id;
-    }
-  });
 
   // check if due date is in the past
   var dueDate = new Date(test.dueDate);
@@ -156,8 +131,6 @@ router.post('/', auth, async (req, res) => {
       classroom,
       rules
     });
-
-    DuplicateQuestion(questions);
 
     await Question.insertMany(questions);
 
