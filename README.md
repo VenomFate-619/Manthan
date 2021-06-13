@@ -96,7 +96,6 @@ These are the prerequisites required to run this application:
 
 - Node
 - npm
-- docker
 - mongo-uri
 
 ### Installation
